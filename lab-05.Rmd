@@ -107,12 +107,12 @@ From the graph we can see that, most of the Nobel winners in physics, medicine, 
 
 4.  Create a new variable called `born_country_us` that has the value `"USA"` if the laureate is born in the US, and `"Other"` otherwise.
     How many of the winners are born in the US? 
-    
-    {105}
-
-
-```{r}
-```
+     {105}
+nobel_living_science %>% filter(born_country_us == "USA") %>% count(born_country_us) 
+# A tibble: 1 x 2
+  born_country_us     n
+* <chr>           <int>
+1 USA               105
 
 Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.d*
 
@@ -136,16 +136,18 @@ Yes, the data support buzzfeed claim. Because we filter and analyse the data bas
 
 Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
 
-
-
 6.  In a single pipeline, filter for laureates who won their prize in the US, but were born outside of the US, and then create a frequency table (with the `count()` function) for their birth country (`born_country`) and arrange the resulting data frame in descending order of number of observations for each country. Which country is the most common?
-
-
-```{r}
-
-```
+  
+```{r
 
 Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you're happy with the final state of your work.*
+```{r}
+nobel_living_science %>%               filter(born_country_us=="Other",country_us=="USA")%>%count(born_country) %>%arrange(desc(n)) 
+```
+Answer
+
+Germany and United Kingdom
+
 
 
 Now go back through your write up to make sure you've answered all questions and all of your R chunks are properly labelled.

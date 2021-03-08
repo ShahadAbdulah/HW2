@@ -116,9 +116,12 @@ Buzzfeed headline.
 
 4.  Create a new variable called `born_country_us` that has the value
     `"USA"` if the laureate is born in the US, and `"Other"` otherwise.
-    How many of the winners are born in the US?
+    How many of the winners are born in the US? {105}
+    nobel\_living\_science %&gt;% filter(born\_country\_us == “USA”)
+    %&gt;% count(born\_country\_us) \# A tibble: 1 x 2 born\_country\_us
+    n
 
-    {105}
+-   <chr> <int> 1 USA 105
 
 Knit, *commit, and push your changes to GitHub with an appropriate
 commit message. Make sure to commit and push all changed files so that
@@ -141,27 +144,41 @@ your Git pane is cleared up afterwards.d*
 nobel_living_science %>%ggplot(aes(x = country_us,y=born_country_us, fill = category)) + geom_bar(stat = "identity", position = "dodge", orientation="horizontal")
 ```
 
-![](lab-05_files/figure-gfm/unnamed-chunk-8-1.png)<!-- --> \`\`\`
+![](lab-05_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
-Yes, the data support buzzfeed claim. Because we filter and analyse the
-data based on the instructions, then compare it with buzzfeed outcomes
-and we found similar outcomes.
 
-Knit, *commit, and push your changes to GitHub with an appropriate
-commit message. Make sure to commit and push all changed files so that
-your Git pane is cleared up afterwards.*
+    Yes, the data support buzzfeed claim. Because we filter and analyse the data based on the instructions, then compare it with buzzfeed outcomes and we found similar outcomes.
 
-6.  In a single pipeline, filter for laureates who won their prize in
-    the US, but were born outside of the US, and then create a frequency
-    table (with the `count()` function) for their birth country
-    (`born_country`) and arrange the resulting data frame in descending
-    order of number of observations for each country. Which country is
-    the most common?
 
-Knit, *commit, and push your changes to GitHub with an appropriate
-commit message. Make sure to commit and push all changed files so that
-your Git pane is cleared up afterwards and review the md document on
-GitHub to make sure you’re happy with the final state of your work.*
+    Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
+
+    6.  In a single pipeline, filter for laureates who won their prize in the US, but were born outside of the US, and then create a frequency table (with the `count()` function) for their birth country (`born_country`) and arrange the resulting data frame in descending order of number of observations for each country. Which country is the most common?
+      
+    ```{r
+
+    Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you're happy with the final state of your work.*
+
+    ```r
+    nobel_living_science %>%               filter(born_country_us=="Other",country_us=="USA")%>%count(born_country) %>%arrange(desc(n)) 
+
+    ## # A tibble: 21 x 2
+    ##    born_country       n
+    ##    <chr>          <int>
+    ##  1 Germany            7
+    ##  2 United Kingdom     7
+    ##  3 China              5
+    ##  4 Canada             4
+    ##  5 Japan              3
+    ##  6 Australia          2
+    ##  7 Israel             2
+    ##  8 Norway             2
+    ##  9 Austria            1
+    ## 10 Finland            1
+    ## # … with 11 more rows
+
+Answer
+
+Germany and United Kingdom
 
 Now go back through your write up to make sure you’ve answered all
 questions and all of your R chunks are properly labelled. Once you
