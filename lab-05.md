@@ -118,6 +118,8 @@ Buzzfeed headline.
     `"USA"` if the laureate is born in the US, and `"Other"` otherwise.
     How many of the winners are born in the US?
 
+    {105}
+
 Knit, *commit, and push your changes to GitHub with an appropriate
 commit message. Make sure to commit and push all changed files so that
 your Git pane is cleared up afterwards.d*
