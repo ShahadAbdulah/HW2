@@ -96,8 +96,13 @@ Knit, *commit, and push your changes to GitHub with an appropriate commit messag
 ## But of those US-based Nobel laureates, many were born in other countries
 
 ```{r}
-
+nobel_living_science %>%
+    ggplot(aes(x = country_us,y=category, fill =category)) +
+   geom_bar(stat = "identity", position = "dodge") + 
+   coord_flip()
 ```
+From the graph we can see that, most of the Nobel winners in physics, medicine, chemistry and economics were based on USA. And that supports the Buzzfeed headline.
+
 
 
 4.  Create a new variable called `born_country_us` that has the value `"USA"` if the laureate is born in the US, and `"Other"` otherwise.
